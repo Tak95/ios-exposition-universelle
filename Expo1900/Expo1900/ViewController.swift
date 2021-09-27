@@ -28,10 +28,19 @@ class ViewController: UIViewController {
         expoData = try? decoder.decode(Expo1900.self, from: dataAsset.data)
     }
     
+    func decimalFormatterNumber() -> String {
+        guard let expoDataItem = expoData else { return "" }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let result = numberFormatter.string(from: NSNumber(value: expoDataItem.visitors)) else { return "" }
+        
+        return result
+    }
+    
     func initExpoData() {
         guard let expoDataItem = expoData else { return }
         expo1900Title.text = expoDataItem.title
-        expo1900Visitors.text = "방문객 : \(String(expoDataItem.visitors))"
+        expo1900Visitors.text = "방문객 : \(decimalFormatterNumber())명"
         expo1900Location.text = "개최지 : \(expoDataItem.location)"
         expo1900Duration.text = "개최 기간 : \(expoDataItem.duration)"
         expo1900Description.text = expoDataItem.description
