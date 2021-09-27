@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4554427F27020B060071B9A3 /* expo1900l.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554427E27020B060071B9A3 /* expo1900l.swift */; };
+		4554428227020C350071B9A3 /* KoreanItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554428127020C350071B9A3 /* KoreanItems.swift */; };
 		C79FF4B52589F401005FB0FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B42589F401005FB0FD /* AppDelegate.swift */; };
 		C79FF4B72589F401005FB0FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B62589F401005FB0FD /* SceneDelegate.swift */; };
 		C79FF4B92589F401005FB0FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B82589F401005FB0FD /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4554427E27020B060071B9A3 /* expo1900l.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = expo1900l.swift; sourceTree = "<group>"; };
+		4554428127020C350071B9A3 /* KoreanItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanItems.swift; sourceTree = "<group>"; };
 		C79FF4B12589F401005FB0FD /* Expo1900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expo1900.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79FF4B42589F401005FB0FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79FF4B62589F401005FB0FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4554428027020C250071B9A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4554427E27020B060071B9A3 /* expo1900l.swift */,
+				4554428127020C350071B9A3 /* KoreanItems.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C79FF4A82589F401005FB0FD = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +69,7 @@
 		C79FF4B32589F401005FB0FD /* Expo1900 */ = {
 			isa = PBXGroup;
 			children = (
+				4554428027020C250071B9A3 /* Model */,
 				C79FF4B42589F401005FB0FD /* AppDelegate.swift */,
 				C79FF4B62589F401005FB0FD /* SceneDelegate.swift */,
 				C79FF4B82589F401005FB0FD /* ViewController.swift */,
@@ -138,6 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C79FF4B92589F401005FB0FD /* ViewController.swift in Sources */,
+				4554428227020C350071B9A3 /* KoreanItems.swift in Sources */,
+				4554427F27020B060071B9A3 /* expo1900l.swift in Sources */,
 				C79FF4B52589F401005FB0FD /* AppDelegate.swift in Sources */,
 				C79FF4B72589F401005FB0FD /* SceneDelegate.swift in Sources */,
 			);
