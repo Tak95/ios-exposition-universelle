@@ -59,6 +59,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="expo1900Description" destination="Wek-om-KBr" id="nEO-v2-aLO"/>
+                        <outlet property="expo1900Duration" destination="GgO-Wm-9sb" id="pIv-9M-Ia0"/>
+                        <outlet property="expo1900Location" destination="nyj-5T-92W" id="ZRL-07-9zb"/>
+                        <outlet property="expo1900Title" destination="lXf-dZ-64e" id="zCO-rH-uAv"/>
+                        <outlet property="expo1900Visitors" destination="yP5-lW-8NA" id="EdE-En-v3u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
