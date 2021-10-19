@@ -42,8 +42,8 @@
 		454A5C9C271EBD9C00F6ADA7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				454A5C9A271EBD9300F6ADA7 /* KoreanItems.swift */,
 				454A5C98271EBD7F00F6ADA7 /* Expo.swift */,
+				454A5C9A271EBD9300F6ADA7 /* KoreanItems.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
