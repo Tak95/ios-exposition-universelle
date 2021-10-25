@@ -8,6 +8,7 @@ import UIKit
 
 class ExpoViewController: UIViewController {
     var expo1900: Expo?
+    
     let scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,7 @@ class ExpoViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         titleLabel.numberOfLines = 2
+        titleLabel.textAlignment = .center
         return titleLabel
     }()
     
@@ -40,6 +42,7 @@ class ExpoViewController: UIViewController {
         var visitorsLabel: UILabel = UILabel()
         visitorsLabel.translatesAutoresizingMaskIntoConstraints = false
         visitorsLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        visitorsLabel.textAlignment = .center
         return visitorsLabel
     }()
     
@@ -47,6 +50,7 @@ class ExpoViewController: UIViewController {
         var locationLabel: UILabel = UILabel()
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        locationLabel.textAlignment = .center
         return locationLabel
     }()
     
@@ -54,6 +58,7 @@ class ExpoViewController: UIViewController {
         var durationLabel: UILabel = UILabel()
         durationLabel.translatesAutoresizingMaskIntoConstraints = false
         durationLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        durationLabel.textAlignment = .center
         return durationLabel
     }()
     
@@ -65,6 +70,26 @@ class ExpoViewController: UIViewController {
         return descriptionLabel
     }()
     
+    private var conversionButton: UIButton = {
+        var conversionButton: UIButton = UIButton()
+        conversionButton.translatesAutoresizingMaskIntoConstraints = false
+        conversionButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote)
+        conversionButton.setTitle("🇰🇷     한국의 출품작     🇰🇷", for: .normal)
+        conversionButton.setTitleColor(UIColor.blue, for: .normal)
+        conversionButton.backgroundColor = .white
+        conversionButton.contentHorizontalAlignment = .center
+        return conversionButton
+    }()
+    
+    func convertButton() {
+        conversionButton.addTarget(self, action: #selector(convertViewController), for: .touchUpInside)
+    }
+    
+    @objc func convertViewController() {
+        let koreanItemsViewController = KoreanItemsViewController()
+        self.navigationController?.pushViewController(koreanItemsViewController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -73,6 +98,7 @@ class ExpoViewController: UIViewController {
         scrollViewConstraints()
         contentsViewConstraints()
         dataContraints()
+        convertButton()
         decodeData()
         initData()
     }
@@ -108,6 +134,7 @@ class ExpoViewController: UIViewController {
         contentsView.addSubview(locationLabel)
         contentsView.addSubview(durationLabel)
         contentsView.addSubview(descriptionLabel)
+        contentsView.addSubview(conversionButton)
     }
     
     func contentsViewConstraints() {
@@ -121,33 +148,71 @@ class ExpoViewController: UIViewController {
     }
     
     func dataContraints() {
+        titleLabelConstraints()
+        expoImageConstraints()
+        visitorsLabelConstraints()
+        locationLabelConstraints()
+        durationLabelConstraints()
+        descriptionLabelConstraints()
+        conversionButtonConstraints()
+    }
+    func titleLabelConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             titleLabel.topAnchor.constraint(equalTo: contentsView.topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: expoImage.topAnchor, constant: -10),
-            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
+    func expoImageConstraints() {
+        NSLayoutConstraint.activate([
             expoImage.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             expoImage.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
             expoImage.bottomAnchor.constraint(equalTo: visitorsLabel.topAnchor, constant: -10),
-            expoImage.heightAnchor.constraint(equalToConstant: 200),
+            expoImage.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+    
+    func visitorsLabelConstraints() {
+        NSLayoutConstraint.activate([
             visitorsLabel.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             visitorsLabel.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            visitorsLabel.bottomAnchor.constraint(equalTo: locationLabel.topAnchor, constant: -10),
+            visitorsLabel.bottomAnchor.constraint(equalTo: locationLabel.topAnchor, constant: -10)
+        ])
+    }
+    
+    func locationLabelConstraints() {
+        NSLayoutConstraint.activate([
             locationLabel.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            locationLabel.bottomAnchor.constraint(equalTo: durationLabel.topAnchor, constant: -10),
+            locationLabel.bottomAnchor.constraint(equalTo: durationLabel.topAnchor, constant: -10)
+        ])
+    }
+    
+    func durationLabelConstraints() {
+        NSLayoutConstraint.activate([
             durationLabel.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             durationLabel.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            durationLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -10),
+            durationLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -10)
+        ])
+    }
+    
+    func descriptionLabelConstraints() {
+        NSLayoutConstraint.activate([
             descriptionLabel.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: conversionButton.topAnchor, constant: -10),
             descriptionLabel.widthAnchor.constraint(equalTo: contentsView.widthAnchor)
         ])
-        titleLabel.textAlignment = .center
-        visitorsLabel.textAlignment = .center
-        locationLabel.textAlignment = .center
-        durationLabel.textAlignment = .center
+    }
+    
+    func conversionButtonConstraints() {
+        NSLayoutConstraint.activate([
+            conversionButton.leadingAnchor.constraint(equalTo: contentsView.leadingAnchor),
+            conversionButton.trailingAnchor.constraint(equalTo: contentsView.trailingAnchor),
+            conversionButton.bottomAnchor.constraint(equalTo: contentsView.bottomAnchor, constant: -10)
+        ])
     }
 }
