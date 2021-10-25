@@ -109,11 +109,19 @@ class ExpoViewController: UIViewController {
         expo1900 = try? jsonDecoder.decode(Expo.self, from: dataAsset.data)
     }
     
+    func convertDecimalVisitors() -> String {
+        guard let expoItem = expo1900 else { return "" }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let result = numberFormatter.string(from: NSNumber(value: expoItem.visitors)) else { return "" }
+        return result
+    }
+    
     func initData() {
         guard let expoData = expo1900 else { return }
         titleLabel.text = expoData.title
         expoImage.image = UIImage(named: "poster")
-        visitorsLabel.text = "방문자 : \(expoData.visitors) 명"
+        visitorsLabel.text = "방문자 : \(convertDecimalVisitors()) 명"
         locationLabel.text = "개최지 : \(expoData.location)"
         durationLabel.text = "개최기간 : \(expoData.duration)"
         descriptionLabel.text = expoData.description
