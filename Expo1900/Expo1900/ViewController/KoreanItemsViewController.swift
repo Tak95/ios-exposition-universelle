@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KoreanItemsViewController: UIViewController {
+class KoreanItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var koreanItemsData: [KoreanItems] = []
     var koreanItemsTableView: UITableView!
     
@@ -16,6 +16,9 @@ class KoreanItemsViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = "메인"
         view.backgroundColor = .white
+        decodeKoreanItemsData()
+        koreanItemsTableView.delegate = self
+        koreanItemsTableView.dataSource = self
     }
     
     func decodeKoreanItemsData() {
@@ -37,7 +40,29 @@ class KoreanItemsViewController: UIViewController {
     }
 }
 class KoreanItemsCell: UITableViewCell {
-    var itemsTitle: UILabel!
-    var itemsImage: UIImageView!
-    var itemsShortDesc: UILabel!
+    var stackView: UIStackView = {
+        var stackView: UIStackView = UIStackView()
+//        stackView.addSubview(itemsTitle)
+//        stackView.addSubview(itemsImage)
+//        stackView.addSubview(itemsShortDesc)
+        return stackView
+    }()
+    var itemsTitle: UILabel = {
+        var itemsTitle: UILabel = UILabel()
+        itemsTitle.translatesAutoresizingMaskIntoConstraints = false
+        itemsTitle.font = UIFont.preferredFont(forTextStyle: .headline)
+        return itemsTitle
+    }()
+    var itemsImage: UIImageView = {
+        var itemsImage: UIImageView = UIImageView()
+        itemsImage.translatesAutoresizingMaskIntoConstraints = false
+        return itemsImage
+    }()
+    var itemsShortDesc: UILabel = {
+        var itemsShortDesc: UILabel = UILabel()
+        itemsShortDesc.translatesAutoresizingMaskIntoConstraints = false
+        itemsShortDesc.font = UIFont.preferredFont(forTextStyle: .footnote)
+        itemsShortDesc.numberOfLines = 0
+        return itemsShortDesc
+    }()
 }
