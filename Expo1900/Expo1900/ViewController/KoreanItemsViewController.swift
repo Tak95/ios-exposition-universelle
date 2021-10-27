@@ -30,6 +30,9 @@ class KoreanItemsViewController: UIViewController {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = koreanItemsTableView.dequeueReusableCell(withIdentifier: "items", for: indexPath) as? KoreanItemsCell else { return UITableViewCell() }
+        cell.itemsTitle.text = koreanItemsData[indexPath.row].name
+        cell.itemsImage.image = UIImage(named: koreanItemsData[indexPath.row].imageName)
+        cell.itemsShortDesc.text = koreanItemsData[indexPath.row].shortDesc
         return cell
     }
 }
