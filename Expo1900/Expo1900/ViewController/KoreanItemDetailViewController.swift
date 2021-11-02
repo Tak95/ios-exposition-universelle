@@ -15,6 +15,7 @@ class KoreanItemDetailViewController: UIViewController {
         itemImage.contentMode = .scaleAspectFit
         return itemImage
     }()
+    
     private var itemDescription: UITextView = {
         var itemDescription: UITextView = UITextView()
         itemDescription.translatesAutoresizingMaskIntoConstraints = false

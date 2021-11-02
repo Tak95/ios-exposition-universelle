@@ -94,7 +94,6 @@ class ExpoViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
-        self.view.addSubview(scrollView)
         scrollViewConstraints()
         contentsViewConstraints()
         dataContraints()
@@ -102,6 +101,7 @@ class ExpoViewController: UIViewController {
         decodeData()
         initData()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -130,14 +130,8 @@ class ExpoViewController: UIViewController {
         descriptionLabel.text = expoData.description
     }
     
-    func scrollViewConstraints() {
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
-        ])
+    func addSubview() {
+        view.addSubview(scrollView)
         scrollView.addSubview(contentsView)
         contentsView.addSubview(titleLabel)
         contentsView.addSubview(expoImage)
@@ -146,6 +140,17 @@ class ExpoViewController: UIViewController {
         contentsView.addSubview(durationLabel)
         contentsView.addSubview(descriptionLabel)
         contentsView.addSubview(conversionButton)
+    }
+    
+    func scrollViewConstraints() {
+        addSubview()
+        NSLayoutConstraint.activate([
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
     
     func contentsViewConstraints() {

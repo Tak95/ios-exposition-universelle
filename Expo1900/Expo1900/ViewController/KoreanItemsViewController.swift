@@ -89,24 +89,27 @@ class KoreanItemsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var labelStackView: UIStackView = {
+    private var labelStackView: UIStackView = {
         var labelStackView: UIStackView = UIStackView()
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
         labelStackView.axis = .vertical
         return labelStackView
     }()
+    
     var itemsTitle: UILabel = {
         var itemsTitle: UILabel = UILabel()
         itemsTitle.translatesAutoresizingMaskIntoConstraints = false
         itemsTitle.font = UIFont.preferredFont(forTextStyle: .headline)
         return itemsTitle
     }()
+    
     var itemsImage: UIImageView = {
         var itemsImage: UIImageView = UIImageView()
         itemsImage.translatesAutoresizingMaskIntoConstraints = false
         itemsImage.contentMode = .scaleAspectFit
         return itemsImage
     }()
+    
     var itemsShortDesc: UILabel = {
         var itemsShortDesc: UILabel = UILabel()
         itemsShortDesc.translatesAutoresizingMaskIntoConstraints = false
