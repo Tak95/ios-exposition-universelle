@@ -102,6 +102,9 @@ class ExpoViewController: UIViewController {
         decodeData()
         initData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
     func decodeData() {
         guard let dataAsset = NSDataAsset(name: "exposition_universelle_1900") else { return }
