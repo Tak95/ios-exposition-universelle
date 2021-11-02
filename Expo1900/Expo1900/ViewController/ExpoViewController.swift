@@ -9,14 +9,14 @@ import UIKit
 class ExpoViewController: UIViewController {
     var expo1900: Expo?
     
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .white
         return scrollView
     }()
     
-    let contentsView: UIView = {
+    private let contentsView: UIView = {
         let contentsView: UIView = UIView()
         contentsView.translatesAutoresizingMaskIntoConstraints = false
         return contentsView

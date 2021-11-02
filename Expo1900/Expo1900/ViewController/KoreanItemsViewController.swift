@@ -38,6 +38,12 @@ class KoreanItemsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let koreanItemsDetailViewController = KoreanItemDetailViewController()
+        self.navigationController?.pushViewController(koreanItemsDetailViewController, animated: true)
+        koreanItemsDetailViewController.didSelectedCellDescription(data: koreanItemsData[indexPath.row])
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
