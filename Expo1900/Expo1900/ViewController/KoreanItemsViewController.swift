@@ -19,12 +19,11 @@ class KoreanItemsViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.topItem?.title = "메인"
-//        navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "한국의 출품작"
         view.backgroundColor = .white
         koreanItemsTableViewConstraints()
         attribute()
         decodeKoreanItemsData()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,6 +36,10 @@ class KoreanItemsViewController: UIViewController, UITableViewDelegate, UITableV
         cell.itemsImage.image = UIImage(named: koreanItemsData[indexPath.row].imageName)
         cell.itemsShortDesc.text = koreanItemsData[indexPath.row].shortDesc
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func attribute() {
